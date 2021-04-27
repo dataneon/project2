@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import ExchangeKraken from './APIs/ExchangeKraken';
 
 function Dashboard(props) {
+    // create state for prices on Kraken
+    // TODO create structure of useState
     const [krakenPrices, setKrakenPrices] = useState()
 
-    console.log(`Dashboard has been loaded`)
+    // Define state for exchange B here
+
+
+    // Define state for exchange C here
+
+    
     return (
         <div>
             <h4>Select coin</h4>
