@@ -8,10 +8,10 @@ function ExchangeKraken({krakenPrices, setKrakenPrices}) {
     useEffect(() => {
         fetch(urlKraken)
             .then(res => res.json())
-            .then(data => {
+            .then(jsonData => {
                 // define newPrice as 1st price in array `a`
                 // TODO update krakenPrices with prices `a`, `b`, and `c`
-                let newPrice = data.result.XBTUSDC.a[0]
+                let newPrice = jsonData.result.XBTUSDC.a[0]
                 // update state
                 setKrakenPrices(newPrice)
             })

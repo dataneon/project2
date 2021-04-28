@@ -8,8 +8,9 @@ function ExchangeCoinbase({coinbaseBTCPrice, setCoinbaseBTCPrice}) {
     useEffect(() => {
         fetch(urlCoinbase)
             .then(res => res.json())
-            .then(data => {
-                let newBTCPrice = data.data.amount
+            .then(jsonData => {
+                // create new price and set it
+                let newBTCPrice = jsonData.data.amount
                 setCoinbaseBTCPrice(newBTCPrice)
             })
             .catch(err => {
