@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 
-let urlCoinbase = `https://api.coinbase.com/v2/prices/spot?currency=USD`
+// let OLDurlCoinbase = `https://api.coinbase.com/v2/prices/spot?currency=USD`
 
-function ExchangeCoinbase({coinbaseBTCPrice, setCoinbaseBTCPrice}) {
+let urlCoinbase = `https://api.pro.coinbase.com/products/BTC-USD/ticker`
+
+function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolume, setCoinbaseVolume}) {
 
     // useEffect updates state of `coinbasePrice`
     useEffect(() => {
@@ -10,18 +12,30 @@ function ExchangeCoinbase({coinbaseBTCPrice, setCoinbaseBTCPrice}) {
             .then(res => res.json())
             .then(jsonData => {
                 // create new price and set it
-                let newBTCPrice = jsonData.data.amount
-                setCoinbaseBTCPrice(newBTCPrice)
+                let newPrice = jsonData.price
+                setCoinbaseLastPrice(newPrice)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
 
+    // useEffect updates state of `coinbaseVolume`
+    useEffect(() => {
+        fetch(urlCoinbase)
+            .then(res => res.json())
+            .then(jsonData => {
+                // create new volume and set it
+                let newVolume = jsonData.volume
+                setCoinbaseVolume(newVolume)
+            })
+    })
+
     return (
         <div>
             <h5>BTCUSD on Coinbase</h5>
-            <div className="coinbasePrices">${coinbaseBTCPrice}</div>
+            <div className="coinbasePrices">${coinbaseLastPrice}</div>
+            <div className="coinbaseVolume">Volume in Bitcoin: {coinbaseVolume}</div>
         </div>
     );
 }

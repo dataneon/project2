@@ -2,28 +2,40 @@ import React, { useEffect } from 'react';
 
 let urlKraken = `https://api.kraken.com/0/public/Ticker?pair=XBTUSDC`
 
-function ExchangeKraken({krakenPrices, setKrakenPrices}) {
+function ExchangeKraken({krakenLastPrice, setKrakenLastPrice, krakenVolume, setKrakenVolume}) {
 
-    // use useEffect to update state of `krakenPrices`
+    // TODO refactor these two useEffect() calls into one by updating one state instead of two
+
+    // use useEffect to update state of `krakenLastPrice`
     useEffect(() => {
         fetch(urlKraken)
             .then(res => res.json())
             .then(jsonData => {
-                // define newPrice as 1st price in array `a`
-                // TODO update krakenPrices with prices `a`, `b`, and `c`
-                let newPrice = jsonData.result.XBTUSDC.a[0]
-                // update state
-                setKrakenPrices(newPrice)
+                // define newPrice
+                let newLastPrice = jsonData.result.XBTUSDC.c[0]
+                setKrakenLastPrice(newLastPrice)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
 
+    // use useEffect to update state of `krakenVolume`
+    useEffect(() => {
+        fetch(urlKraken)
+            .then(res => res.json())
+            .then(jsonData => {
+                // define newVolume
+                let newVolume = jsonData.result.XBTUSDC.v[1]
+                setKrakenVolume(newVolume)
+            })
+    })
+
     return (
         <div>
             <h5>XBTUSDC on Kraken</h5>
-            <div className="krakenPrices">${krakenPrices}</div>
+            <div className="krakenLastPrice">Last price: ${krakenLastPrice}</div>
+            <div className="krakenVolume">Volume in Bitcoin: {krakenVolume}</div>
         </div>
     );
 }

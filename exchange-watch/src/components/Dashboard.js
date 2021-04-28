@@ -7,27 +7,38 @@ import ExchangeHuobi from './APIs/ExchangeHuobi'
 import IndividualExchange from './IndividualExchange'
 
 function Dashboard(props) {
-    // create state for prices on Kraken
     // TODO create structure of useState
-    const [krakenPrices, setKrakenPrices] = useState()
+    let stateTemplate = {lastPrice: 0, volume: 0}
+
+    // create states for price and volume on Kraken
+    const [krakenLastPrice, setKrakenLastPrice] = useState()
+    const [krakenVolume, setKrakenVolume] = useState()
 
     // Create state for price on Coinbase
-    const [coinbaseBTCPrice, setCoinbaseBTCPrice] = useState()
+    const [coinbaseLastPrice, setCoinbaseLastPrice] = useState()
+    const [coinbaseVolume, setCoinbaseVolume] = useState()
 
     // Define state for price on Huobi
-    const [huobiBTCPrice, setHuobiBTCPrice] = useState()
+    const [huobiLastPrice, setHuobiLastPrice] = useState()
+    const [huobiVolume, setHuobiVolume] = useState()
 
-    
     return (
         <div>
             <h4>Select coin</h4>
             [Dropdown menu]
-            <ExchangeKraken     krakenPrices={krakenPrices}
-                                setKrakenPrices={setKrakenPrices}/>
-            <ExchangeCoinbase   coinbaseBTCPrice={coinbaseBTCPrice}
-                                setCoinbaseBTCPrice={setCoinbaseBTCPrice}/>
-            <ExchangeHuobi      huobiBTCPrice={huobiBTCPrice}
-                                sethuobiBTCPrice={setHuobiBTCPrice}/>
+            <ExchangeKraken     krakenLastPrice={krakenLastPrice}
+                                setKrakenLastPrice={setKrakenLastPrice}
+                                krakenVolume={krakenVolume}
+                                setKrakenVolume={setKrakenVolume}/>
+            <ExchangeCoinbase   coinbaseLastPrice={coinbaseLastPrice}
+                                setCoinbaseLastPrice={setCoinbaseLastPrice}
+                                coinbaseVolume={coinbaseVolume}
+                                setCoinbaseVolume={setCoinbaseVolume}/>
+            <ExchangeHuobi      huobiLastPrice={huobiLastPrice}
+                                setHuobiLastPrice={setHuobiLastPrice}
+                                huobiVolume={huobiVolume}
+                                setHuobiVolume={setHuobiVolume}
+                                />
         </div>
     );
 }
