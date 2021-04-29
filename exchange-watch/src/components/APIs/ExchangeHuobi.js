@@ -4,6 +4,8 @@ let urlHuobi = `https://api.huobi.pro/market/detail/merged?symbol=btcusdt`
 
 function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobiVolume}) {
 
+    // TODO refactor these two useEffect() calls down to one
+
     // useEffect updates state of `huobiLastPrice`
     useEffect(() => {
         fetch(urlHuobi)
@@ -27,13 +29,13 @@ function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobi
                 let newVolume = jsonData.tick.vol
                 setHuobiVolume(newVolume)
             })
-    })
+    }, [])
 
     return (
         <div>
           <h5>BTCUSDT on Huobi</h5>  
-          <div className="huobiLastPrice">${huobiLastPrice}</div>
-          <div className="huobiVolume">Volume in USD: ${huobiVolume}</div>
+          <div className="huobiLastPrice">Last price: ${huobiLastPrice}</div>
+          <div className="huobiVolume">24-hour volume in USD: ${huobiVolume}</div>
         </div>
     );
 }

@@ -14,18 +14,29 @@ function Dashboard(props) {
     const [krakenLastPrice, setKrakenLastPrice] = useState()
     const [krakenVolume, setKrakenVolume] = useState()
 
-    // Create state for price on Coinbase
+    // Create states for price and volume on Coinbase Pro
     const [coinbaseLastPrice, setCoinbaseLastPrice] = useState()
     const [coinbaseVolume, setCoinbaseVolume] = useState()
 
-    // Define state for price on Huobi
+    // Create state for price on Huobi
     const [huobiLastPrice, setHuobiLastPrice] = useState()
     const [huobiVolume, setHuobiVolume] = useState()
 
     return (
         <div>
             <h4>Select coin</h4>
-            [Dropdown menu]
+            <select>
+                <option value=''>Bitcoin</option>
+                <option value=''>Ethereum</option>
+                <option value=''>Cardano</option>
+                <option value=''>Uniswap</option>
+                <option value=''>Litecoin</option>
+                <option value=''>Bitcoin Cash</option>
+                <option value=''>Chainlink</option>
+                <option value=''>Stellar Lumens</option>
+                <option value=''>Filecoin</option>
+                <option value=''>Aave</option>
+            </select>
             <ExchangeKraken     krakenLastPrice={krakenLastPrice}
                                 setKrakenLastPrice={setKrakenLastPrice}
                                 krakenVolume={krakenVolume}

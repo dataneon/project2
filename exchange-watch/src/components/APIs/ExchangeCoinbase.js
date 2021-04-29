@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 
-// let OLDurlCoinbase = `https://api.coinbase.com/v2/prices/spot?currency=USD`
-
 let urlCoinbase = `https://api.pro.coinbase.com/products/BTC-USD/ticker`
 
 function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolume, setCoinbaseVolume}) {
+
+    // TODO refactor thse two useEffect() calls down to one
 
     // useEffect updates state of `coinbasePrice`
     useEffect(() => {
@@ -29,13 +29,13 @@ function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolu
                 let newVolume = jsonData.volume
                 setCoinbaseVolume(newVolume)
             })
-    })
+    }, [])
 
     return (
         <div>
-            <h5>BTCUSD on Coinbase</h5>
-            <div className="coinbasePrices">${coinbaseLastPrice}</div>
-            <div className="coinbaseVolume">Volume in Bitcoin: {coinbaseVolume}</div>
+            <h5>BTCUSD on Coinbase Pro</h5>
+            <div className="coinbasePrices">Last price: ${coinbaseLastPrice}</div>
+            <div className="coinbaseVolume">24-hour volume in Bitcoin: {coinbaseVolume}</div>
         </div>
     );
 }

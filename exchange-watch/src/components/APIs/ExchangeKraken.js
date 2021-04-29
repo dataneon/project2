@@ -29,13 +29,13 @@ function ExchangeKraken({krakenLastPrice, setKrakenLastPrice, krakenVolume, setK
                 let newVolume = jsonData.result.XBTUSDC.v[1]
                 setKrakenVolume(newVolume)
             })
-    })
+    }, [])
 
     return (
         <div>
             <h5>XBTUSDC on Kraken</h5>
             <div className="krakenLastPrice">Last price: ${krakenLastPrice}</div>
-            <div className="krakenVolume">Volume in Bitcoin: {krakenVolume}</div>
+            <div className="krakenVolume">24-hour volume in Bitcoin: {krakenVolume}</div>
         </div>
     );
 }
