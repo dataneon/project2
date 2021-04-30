@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react';
-
-let urlHuobi = `https://api.huobi.pro/market/detail/merged?symbol=btcusdt`
+import React, { useContext, useEffect } from 'react';
+import { DataContext } from '../DataContext'
 
 function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobiVolume}) {
 
-    // TODO refactor these two useEffect() calls down to one
+    const {menuState, setMenuState} = useContext(DataContext)
+    let assetChoice = menuState.userChoice
+
+    // use object to determine which ticker to retrieve
+    let tickersObj = {
+        BTC: "btcusdt",
+        ETH: "ethusdt",
+        ADA: "adausdt",
+        LTC: "ltcusdt",
+        BCH: "bchusdt",
+        LINK: "linkusdt",
+        XLM: "xlmusdt",
+    }
+
+    // default to Bitcoin if there is no selection
+    if (assetChoice.length == 0) {
+        assetChoice = "BTC"
+    }
+
+    // shorthand for selected ticker string
+    let tickerStr = tickersObj[assetChoice]
+    console.log(`huobi ticker: ${tickerStr}`)
+
+    // build slug based on user's choice in the menu
+    let newURL = `https://api.huobi.pro/market/detail/merged?symbol=${tickerStr}`
 
     // useEffect updates state of `huobiLastPrice`
     useEffect(() => {
-        fetch(urlHuobi)
+        fetch(newURL)
             .then(res => res.json())
             .then(jsonData => {
                 // define newPrice
@@ -18,23 +41,19 @@ function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobi
             .catch(err => {
                 console.log(err)
             })
-    }, [])
-
-    // useEffect updates state of `huobiVolume`
-    useEffect(() => {
-        fetch(urlHuobi)
+        fetch(newURL)
             .then(res => res.json())
             .then(jsonData => {
                 // define newVolume and set it
                 let newVolume = jsonData.tick.vol
                 setHuobiVolume(newVolume)
             })
-    }, [])
+    }, [menuState])
 
     return (
         <div>
-          <h5>BTCUSDT on Huobi</h5>  
-          <div className="huobiLastPrice">Last price: ${huobiLastPrice}</div>
+          <h4>Huobi</h4>  
+          <div className="huobiLastPrice">Last price of {assetChoice}: ${huobiLastPrice}</div>
           <div className="huobiVolume">24-hour volume in USD: ${huobiVolume}</div>
         </div>
     );

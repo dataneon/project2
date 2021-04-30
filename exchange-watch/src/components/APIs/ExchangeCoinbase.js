@@ -1,14 +1,38 @@
-import React, { useEffect } from 'react';
-
-let urlCoinbase = `https://api.pro.coinbase.com/products/BTC-USD/ticker`
+import React, { useContext, useEffect } from 'react';
+import { DataContext } from '../DataContext';
 
 function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolume, setCoinbaseVolume}) {
 
-    // TODO refactor thse two useEffect() calls down to one
+    // useContext brings in the menuState
+    const {menuState, setMenuState} = useContext(DataContext)
+    let assetChoice = menuState.userChoice
 
-    // useEffect updates state of `coinbasePrice`
+    // use object to determine which ticker to retrieve
+    let tickersObj = {
+        BTC: "BTC-USD",
+        ETH: "ETH-USD",
+        ADA: "ADA-USD",
+        LTC: "LTC-USD",
+        BCH: "BCH-USD",
+        LINK: "LINK-USD",
+        XLM: "XLM-USD",
+    }
+
+    // default to Bitcoin if there is no selection
+    if (assetChoice.length == 0) {
+        assetChoice = "BTC"
+    }
+
+    // shorthand for selected ticker string
+    let tickerStr = tickersObj[assetChoice]
+    console.log(`Coinbase ticker: ${tickerStr}`)
+
+    // build slug based on user's choice in the menu
+    let newURL = `https://api.pro.coinbase.com/products/${tickerStr}/ticker`
+
+    // useEffect updates state of `coinbasePrice` and `coinbaseVolume`
     useEffect(() => {
-        fetch(urlCoinbase)
+        fetch(newURL)
             .then(res => res.json())
             .then(jsonData => {
                 // create new price and set it
@@ -18,24 +42,20 @@ function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolu
             .catch(err => {
                 console.log(err)
             })
-    }, [])
-
-    // useEffect updates state of `coinbaseVolume`
-    useEffect(() => {
-        fetch(urlCoinbase)
+        fetch(newURL)
             .then(res => res.json())
             .then(jsonData => {
                 // create new volume and set it
                 let newVolume = jsonData.volume
                 setCoinbaseVolume(newVolume)
             })
-    }, [])
+    }, [menuState])
 
     return (
         <div>
-            <h5>BTCUSD on Coinbase Pro</h5>
-            <div className="coinbasePrices">Last price: ${coinbaseLastPrice}</div>
-            <div className="coinbaseVolume">24-hour volume in Bitcoin: {coinbaseVolume}</div>
+            <h4>Coinbase Pro</h4>
+            <div className="coinbasePrices">Last price of {assetChoice}: ${coinbaseLastPrice}</div>
+            <div className="coinbaseVolume">24-hour volume in {assetChoice}: {coinbaseVolume}</div>
         </div>
     );
 }
