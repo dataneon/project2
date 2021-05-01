@@ -7,7 +7,7 @@ function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolu
     const {menuState, setMenuState} = useContext(DataContext)
     let assetChoice = menuState.userChoice
 
-    // use object to determine which ticker to retrieve
+    // object to determine which ticker to retrieve
     let tickersObj = {
         BTC: "BTC-USD",
         ETH: "ETH-USD",
@@ -25,7 +25,6 @@ function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolu
 
     // shorthand for selected ticker string
     let tickerStr = tickersObj[assetChoice]
-    console.log(`Coinbase ticker: ${tickerStr}`)
 
     // build slug based on user's choice in the menu
     let newURL = `https://api.pro.coinbase.com/products/${tickerStr}/ticker`
@@ -49,13 +48,16 @@ function ExchangeCoinbase({coinbaseLastPrice, setCoinbaseLastPrice, coinbaseVolu
                 let newVolume = jsonData.volume
                 setCoinbaseVolume(newVolume)
             })
+            .catch(err => {
+                console.log(err)
+            })
     }, [menuState])
 
     return (
         <div>
             <h4>Coinbase Pro</h4>
             <div className="coinbasePrices">Last price of {assetChoice}: ${coinbaseLastPrice}</div>
-            <div className="coinbaseVolume">24-hour volume in {assetChoice}: {coinbaseVolume}</div>
+            {/* <div className="coinbaseVolume">24-hour volume in {tickerStr}: {coinbaseVolume}</div> */}
         </div>
     );
 }

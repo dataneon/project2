@@ -3,6 +3,7 @@ import { DataContext } from '../DataContext'
 
 function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobiVolume}) {
 
+    // useContext brings in the menuState
     const {menuState, setMenuState} = useContext(DataContext)
     let assetChoice = menuState.userChoice
 
@@ -24,7 +25,6 @@ function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobi
 
     // shorthand for selected ticker string
     let tickerStr = tickersObj[assetChoice]
-    console.log(`huobi ticker: ${tickerStr}`)
 
     // build slug based on user's choice in the menu
     let newURL = `https://api.huobi.pro/market/detail/merged?symbol=${tickerStr}`
@@ -34,7 +34,7 @@ function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobi
         fetch(newURL)
             .then(res => res.json())
             .then(jsonData => {
-                // define newPrice
+                // define newPrice and set it
                 let newPrice = jsonData.tick.close
                 setHuobiLastPrice(newPrice)
             })
@@ -48,13 +48,16 @@ function ExchangeHuobi({huobiLastPrice, setHuobiLastPrice, huobiVolume, setHuobi
                 let newVolume = jsonData.tick.vol
                 setHuobiVolume(newVolume)
             })
+            .catch(err => {
+                console.log(err)
+            })
     }, [menuState])
 
     return (
         <div>
           <h4>Huobi</h4>  
           <div className="huobiLastPrice">Last price of {assetChoice}: ${huobiLastPrice}</div>
-          <div className="huobiVolume">24-hour volume in USD: ${huobiVolume}</div>
+          {/* <div className="huobiVolume">24-hour volume in USD: ${huobiVolume}</div> */}
         </div>
     );
 }

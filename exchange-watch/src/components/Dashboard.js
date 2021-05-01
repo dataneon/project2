@@ -9,9 +9,6 @@ import { DataContext } from './DataContext'
 import IndividualExchange from './IndividualExchange'
 
 function Dashboard(props) {
-    // TODO create structure of useState
-    const stateTemplate = {lastPrice: 0, volume: 0}
-
     // create states for price and volume on Kraken
     const [krakenLastPrice, setKrakenLastPrice] = useState()
     const [krakenVolume, setKrakenVolume] = useState()
@@ -37,16 +34,15 @@ function Dashboard(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log(`User choice: ${menuState.userChoice}`)
         // setMenuState(initialMenuState)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="coinChoice"></label>
+                {/* <label htmlFor="coinChoice"></label> */}
                 <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
-                    <option value="none">Choose asset</option>
+                    <option value="">Choose asset</option>
                     <option value="BTC">Bitcoin</option>
                     <option value="ETH">Ethereum</option>
                     <option value='ADA'>Cardano</option>
