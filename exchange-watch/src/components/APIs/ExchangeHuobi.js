@@ -75,24 +75,28 @@ function ExchangeHuobi({infoButtonHuobi}) {
     if (infoButtonHuobi === false) {
         return (
             <div id="huobiReturn" className="APIReturns">
-                <h4>Huobi</h4>
-                <h5>{assetChoice}</h5>
-                <p>Last price: ${lastPrice}</p>
+                <h3 class="blockHeaders">Huobi: {assetChoice}</h3>
+                <div class="blockText">
+                    <p>Last price: ${lastPrice}</p>
+                </div>
             </div>
         )
     } else {
         return (
             <div id="huobiReturn" className="APIReturns">
-                <h4>Huobi</h4>
-                <h5>{assetChoice}</h5>
-                <p>Last price: ${lastPrice}</p>
-                <p>Ask price: ${askPrice}</p>
-                <p>Bid price: ${bidPrice}</p>
-                <p>Volume today in {tickerStr}: ${volume}</p>
-                <p>Trades today: {tradesToday}</p>
-                <p>Today's opening price: ${openingPrice}</p>
-                <p>Today's high: ${highToday}</p>
-                <p>Today's low: ${lowToday}</p>
+                <h3 class="blockHeaders">Huobi: {assetChoice}</h3>
+                <div class="blockText">
+                    <ul>
+                        <li>Last price: ${lastPrice}</li>
+                        <li>Ask price: ${askPrice}</li>
+                        <li>Bid price: ${bidPrice}</li>
+                        <li>Volume today: ${volume}</li>
+                        <li>Trades today: {tradesToday}</li>
+                        <li>Today's opening price: ${openingPrice}</li>
+                        <li>Today's high: ${highToday}</li>
+                        <li>Today's low: ${lowToday}</li>
+                    </ul>
+                </div>
             </div>
         )
     }

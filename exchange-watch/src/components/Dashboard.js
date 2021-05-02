@@ -35,7 +35,7 @@ function Dashboard(props) {
     return (
         <div>
             {/* <form onSubmit={handleSubmit}> */}
-            <form>
+            <form id="assetMenu">
                 {/* <label htmlFor="coinChoice"></label> */}
                 <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
                     <option value="">Choose asset</option>
@@ -51,12 +51,20 @@ function Dashboard(props) {
                 {/* <button type="submit">Go</button> */}
             </form>
             <DataContext.Provider value={{menuState, setMenuState}}>
-                <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
-                <button value="kraken" onClick={handleInfoClick}>More information</button>
-                <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
-                <button value="coinbase" onClick={handleInfoClick}>More information</button>
-                <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
-                <button value="huobi" onClick={handleInfoClick}>More information</button>
+                <div id="allBlocks">
+                    <div id="coinbaseBlock">
+                        <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
+                        <button value="coinbase" onClick={handleInfoClick}>More information</button>
+                    </div>
+                    <div id="huobiBlock">
+                        <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
+                        <button value="huobi" onClick={handleInfoClick}>More information</button>
+                    </div>
+                    <div id="krakenBlock">
+                        <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
+                        <button value="kraken" onClick={handleInfoClick}>More information</button>
+                    </div>
+                </div>
             </DataContext.Provider>
         </div>
     );

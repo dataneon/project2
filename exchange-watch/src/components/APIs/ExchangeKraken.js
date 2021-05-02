@@ -100,30 +100,34 @@ function ExchangeKraken({infoButtonKraken}) {
     if (infoButtonKraken === false) {
         return (
             <div id="krakenReturn" className="APIReturns">
-                <h4>Kraken</h4>
-                <h5>{assetChoice}</h5>
-                <p>Last price: ${LastPrice}</p>
+                <h3 class="blockHeaders">Kraken: {assetChoice}</h3>
+                <div class="blockText">
+                    <p>Last price: ${LastPrice}</p>
+                </div>
             </div>
         )
     } else {
         return (
             <div id="krakenReturn" className="APIReturns">
-                <h4>Kraken</h4>
-                <h5>{assetChoice}</h5>
-                <p>Last price: ${LastPrice}</p>
-                <p>Ask price: ${askPrice}</p>
-                <p>Bid price: ${bidPrice}</p>
-                <p>Volume today in {tickerStr}: {volumeToday} {assetChoice}</p>
-                <p>Volume in the last 24 hours in {tickerStr}: {volumeLast24HR} {assetChoice}</p>
-                <p>Average price today: ${averagePriceToday}</p>
-                <p>Average price over the last 24 hours: ${averagePriceLast24HR}</p>
-                <p>Trades today: {tradesToday}</p>
-                <p>Trades over the last 24 hours: {tradesLast24HR}</p>
-                <p>Today's low: ${lowToday}</p>
-                <p>Low over the last 24 hours: ${lowLast24HR}</p>
-                <p>Today's high: ${highToday}</p>
-                <p>High over the last 24 hours: {highLast24HR}</p>
-                <p>Today's opening price: ${openingPrice}</p>
+                <h3 class="blockHeaders">Kraken: {assetChoice}</h3>
+                <div class="blockText">
+                    <ul>
+                        <li>Last price: ${LastPrice}</li>
+                        <li>Ask price: ${askPrice}</li>
+                        <li>Bid price: ${bidPrice}</li>
+                        <li>Volume today in {tickerStr}: {volumeToday} {assetChoice}</li>
+                        <li>Volume of last 24 hours: {volumeLast24HR} {assetChoice}</li>
+                        <li>Average price today: ${averagePriceToday}</li>
+                        <li>Average price of last 24 hours: ${averagePriceLast24HR}</li>
+                        <li>Trades today: {tradesToday}</li>
+                        <li>Trades over the last 24 hours: {tradesLast24HR}</li>
+                        <li>Today's low: ${lowToday}</li>
+                        <li>Low over the last 24 hours: ${lowLast24HR}</li>
+                        <li>Today's high: ${highToday}</li>
+                        <li>High over the last 24 hours: {highLast24HR}</li>
+                        <li>Today's opening price: ${openingPrice}</li>
+                    </ul>
+                </div>
             </div>
         )
     }

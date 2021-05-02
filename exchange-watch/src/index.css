@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: slategrey;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  color: white;
 }
 
 code {
@@ -12,10 +17,53 @@ code {
     monospace;
 }
 
-body {
-  background-color: slategrey
+p {
+  font-size: 0.75rem;
+  text-align: left;
 }
 
-p {
-  font-size: 12px;
+.APIReturns {
+  /* border: solid; */
 }
+
+#headerReturn {
+  /* justify-content: center; */
+}
+
+#krakenBlock {
+}
+
+#coinbaseBlock {
+}
+
+#huobiBlock {
+}
+
+#allBlocks {
+  display: flex;
+  justify-content: space-around;
+  /* text-align: left; */
+}
+
+#assetMenu {
+  margin: 1rem 0 10rem 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.blockHeaders {
+  text-align: center;
+}
+
+.blockText {
+  justify-content: left;
+}
+
+#allBlocks li {
+  text-align: left;
+  font-size: 0.75rem;
+}
+
+/* TODO: stack blocks if window becomes too thin */
