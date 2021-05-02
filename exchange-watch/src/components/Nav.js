@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
-import Dashboard from './Dashboard';
+import { Link } from 'react-router-dom'
 
 function Nav(props) {
     return (
