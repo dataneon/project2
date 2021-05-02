@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 
-function IndividualExchange(props) {
+function IndividualExchange({ match, menuState, setMenuState}) {
+
+    console.log(`menuState = ${menuState}`)
+
     return (
         <div>
             IndividualExchange-text

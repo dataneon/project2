@@ -1,45 +1,48 @@
 import React, { useState, useContext } from 'react';
-import ExchangeKraken from './APIs/ExchangeKraken';
+import { Route, Link, Redirect } from 'react-router-dom'
+import ExchangeKraken from './APIs/ExchangeKraken'
+// import OldExchangeCoinbase from './APIs/OldExchangeCoinbase'
 import ExchangeCoinbase from './APIs/ExchangeCoinbase'
-import ExchangeHuobi from './APIs/ExchangeHuobi'
-
+// import OldExchangeHuobi from './APIs/OldExchangeHuobi'
 import { DataContext } from './DataContext'
 
-// Individual Exchange is called when a user clicks on the button below the exchanges
-import IndividualExchange from './IndividualExchange'
-
 function Dashboard(props) {
-    // create states for price and volume on Kraken
-    const [krakenLastPrice, setKrakenLastPrice] = useState()
-    const [krakenVolume, setKrakenVolume] = useState()
-
-    // Create states for price and volume on Coinbase Pro
-    const [coinbaseLastPrice, setCoinbaseLastPrice] = useState()
-    const [coinbaseVolume, setCoinbaseVolume] = useState()
-
     // Create state for price on Huobi
     const [huobiLastPrice, setHuobiLastPrice] = useState()
     const [huobiVolume, setHuobiVolume] = useState()
 
-    // global variable to indicate the selected cryptocurrency
+    // define state for selected cryptocurrency from dropdown menu
     const initialMenuState = {userChoice: ''}
     const [menuState, setMenuState] = useState(initialMenuState)
 
-    // an attempt at just using a global string
-    let menuString = ''
-
-    const handleChange = (event) => {
+    // Set state after change in dropdown menu and prevent default behavior of menu
+    function handleChange(event) {
         setMenuState({...menuState, userChoice: event.target.value})
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     // setMenuState(initialMenuState)
+    // }
 
-    const handleSubmit = (event) => {
+    // Create state for additional-information buttons
+    const [infoButtonKraken, setInfoButtonKraken] = useState(false)
+    const [infoButtonCoinbase, setInfoButtonCoinbase] = useState(false)
+    const [infoButtonHuobi, setInfoButtonHuobi] = useState(false)
+
+    // Set state after more-info button click
+    function handleInfoClick(event) {
         event.preventDefault()
-        // setMenuState(initialMenuState)
+        let buttonValue = event.target.value
+        console.log(`infobuttonclick event: ${buttonValue}`)
+        if (buttonValue == "kraken") setInfoButtonKraken(!infoButtonKraken)
+        if (buttonValue == "coinbase") setInfoButtonCoinbase(!infoButtonCoinbase)
+        if (buttonValue == "huobi") setInfoButtonHuobi(!infoButtonHuobi)
     }
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}> */}
+            <form>
                 {/* <label htmlFor="coinChoice"></label> */}
                 <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
                     <option value="">Choose asset</option>
@@ -53,21 +56,16 @@ function Dashboard(props) {
                 </select>
                 {/* <button type="submit">Go</button> */}
             </form>
-
             <DataContext.Provider value={{menuState, setMenuState}}>
-                <ExchangeKraken     krakenLastPrice={krakenLastPrice}
-                                    setKrakenLastPrice={setKrakenLastPrice}
-                                    krakenVolume={krakenVolume}
-                                    setKrakenVolume={setKrakenVolume}/>
-                <ExchangeCoinbase   coinbaseLastPrice={coinbaseLastPrice}
-                                    setCoinbaseLastPrice={setCoinbaseLastPrice}
-                                    coinbaseVolume={coinbaseVolume}
-                                    setCoinbaseVolume={setCoinbaseVolume}/>
-                <ExchangeHuobi      huobiLastPrice={huobiLastPrice}
+                <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
+                    <button value="kraken" onClick={handleInfoClick}>More information</button>
+                <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
+                    <button value="coinbase" onClick={handleInfoClick}>More information</button>
+                {/* <OldExchangeHuobi      huobiLastPrice={huobiLastPrice}
                                     setHuobiLastPrice={setHuobiLastPrice}
                                     huobiVolume={huobiVolume}
-                                    setHuobiVolume={setHuobiVolume}
-                                    />
+                                    setHuobiVolume={setHuobiVolume}/>
+                    <button value="huobi" onClick={handleInfoClick}>More information</button> */}
             </DataContext.Provider>
         </div>
     );
