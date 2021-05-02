@@ -1,16 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom'
 import ExchangeKraken from './APIs/ExchangeKraken'
 // import OldExchangeCoinbase from './APIs/OldExchangeCoinbase'
 import ExchangeCoinbase from './APIs/ExchangeCoinbase'
 // import OldExchangeHuobi from './APIs/OldExchangeHuobi'
 import { DataContext } from './DataContext'
+import ExchangeHuobi from './APIs/ExchangeHuobi';
 
 function Dashboard(props) {
-    // Create state for price on Huobi
-    const [huobiLastPrice, setHuobiLastPrice] = useState()
-    const [huobiVolume, setHuobiVolume] = useState()
-
     // define state for selected cryptocurrency from dropdown menu
     const initialMenuState = {userChoice: ''}
     const [menuState, setMenuState] = useState(initialMenuState)
@@ -58,14 +54,11 @@ function Dashboard(props) {
             </form>
             <DataContext.Provider value={{menuState, setMenuState}}>
                 <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
-                    <button value="kraken" onClick={handleInfoClick}>More information</button>
+                <button value="kraken" onClick={handleInfoClick}>More information</button>
                 <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
-                    <button value="coinbase" onClick={handleInfoClick}>More information</button>
-                {/* <OldExchangeHuobi      huobiLastPrice={huobiLastPrice}
-                                    setHuobiLastPrice={setHuobiLastPrice}
-                                    huobiVolume={huobiVolume}
-                                    setHuobiVolume={setHuobiVolume}/>
-                    <button value="huobi" onClick={handleInfoClick}>More information</button> */}
+                <button value="coinbase" onClick={handleInfoClick}>More information</button>
+                <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
+                <button value="huobi" onClick={handleInfoClick}>More information</button>
             </DataContext.Provider>
         </div>
     );
