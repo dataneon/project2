@@ -15,3 +15,7 @@ code {
 body {
   background-color: slategrey
 }
+
+p {
+  font-size: 12px;
+}

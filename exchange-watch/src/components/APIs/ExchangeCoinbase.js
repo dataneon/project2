@@ -23,6 +23,7 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
         BCH: "BCH-USD",
         LINK: "LINK-USD",
         XLM: "XLM-USD",
+        XTZ: "XTZ-USD"
     }
     
     // default to Bitcoin if there is no selection
@@ -42,23 +43,18 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
                 // last price
                 let newLastPrice = jsonData.price
                 setLastPrice(newLastPrice)
-
                 // size of last purchase
                 let newSizeLastPurchase = jsonData.size
                 setSizeLastPurchase(newSizeLastPurchase)
-
                 // time of last purchase
                 let newTimeLastPurchase = jsonData.time
                 setTimeLastPurchase(newTimeLastPurchase)
-
                 // bid price
                 let newBidPrice = jsonData.bid
                 setBidPrice(newBidPrice)
-
                 // ask price
                 let newAskPrice = jsonData.ask
                 setAskPrice(newAskPrice)
-
                 // volume
                 let newVolume = jsonData.volume
                 setVolume(newVolume)
@@ -68,10 +64,10 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
             })
     }, [menuState])
 
-    // if-else statement determines how much information is displayed
+    // determine how much info to display via if-else statement
     if (infoButtonCoinbase === false) {
         return (
-            <div className="coinbaseReturn">
+            <div id="coinbaseReturn" className="APIReturns">
                 <h4>Coinbase Pro</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${lastPrice}</p>
@@ -79,7 +75,7 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
         )
     } else {
         return (
-            <div className="coinbaseReturn">
+            <div id="coinbaseReturn" className="APIReturns">
                 <h4>Coinbase Pro</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${lastPrice}</p>

@@ -25,6 +25,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
         BCH: "bchusdt",
         LINK: "linkusdt",
         XLM: "xlmusdt",
+        XTZ: "xtzusdt",
     }
 
     // default to Bitcoin if there is no selection
@@ -43,31 +44,24 @@ function ExchangeHuobi({infoButtonHuobi}) {
             // last price
             let newLastPrice = jsonData.tick.close
             setLastPrice(newLastPrice)
-
             // opening price
             let newOpeningPrice = jsonData.tick.open
             setOpeningPrice(newOpeningPrice)
-
             // high today
             let newHighPrice = jsonData.tick.high
             setHighToday(newHighPrice)
-
             // number of trades
             let newTradesToday = jsonData.tick.count
             setTradesToday(newTradesToday)
-
             // low today
             let newLowToday = jsonData.tick.low
             setLowToday(newLowToday)
-
             // ask price
             let newAskPrice = jsonData.tick.ask[0]
             setAskPrice(newAskPrice)
-
             // bid price
             let newBidPrice = jsonData.tick.bid[0]
             setBidPrice(newBidPrice)
-
             // volume
             let newVolume = jsonData.tick.vol
             setVolume(newVolume)
@@ -80,7 +74,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
     // determine how much info to display via if-else statement
     if (infoButtonHuobi === false) {
         return (
-            <div className="huobiReturn">
+            <div id="huobiReturn" className="APIReturns">
                 <h4>Huobi</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${lastPrice}</p>
@@ -88,7 +82,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
         )
     } else {
         return (
-            <div className="huobiReturn">
+            <div id="huobiReturn" className="APIReturns">
                 <h4>Huobi</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${lastPrice}</p>

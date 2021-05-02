@@ -1,10 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react'
 import ExchangeKraken from './APIs/ExchangeKraken'
-// import OldExchangeCoinbase from './APIs/OldExchangeCoinbase'
 import ExchangeCoinbase from './APIs/ExchangeCoinbase'
-// import OldExchangeHuobi from './APIs/OldExchangeHuobi'
+import ExchangeHuobi from './APIs/ExchangeHuobi'
 import { DataContext } from './DataContext'
-import ExchangeHuobi from './APIs/ExchangeHuobi';
 
 function Dashboard(props) {
     // define state for selected cryptocurrency from dropdown menu
@@ -29,7 +27,6 @@ function Dashboard(props) {
     function handleInfoClick(event) {
         event.preventDefault()
         let buttonValue = event.target.value
-        console.log(`infobuttonclick event: ${buttonValue}`)
         if (buttonValue == "kraken") setInfoButtonKraken(!infoButtonKraken)
         if (buttonValue == "coinbase") setInfoButtonCoinbase(!infoButtonCoinbase)
         if (buttonValue == "huobi") setInfoButtonHuobi(!infoButtonHuobi)
@@ -49,6 +46,7 @@ function Dashboard(props) {
                     <option value='BCH'>Bitcoin Cash</option>
                     <option value='LINK'>Chainlink</option>
                     <option value='XLM'>Stellar Lumens</option>
+                    <option value='XTZ'>Tezos</option>
                 </select>
                 {/* <button type="submit">Go</button> */}
             </form>

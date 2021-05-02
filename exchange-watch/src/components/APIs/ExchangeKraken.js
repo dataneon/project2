@@ -31,6 +31,7 @@ function ExchangeKraken({infoButtonKraken}) {
         BCH: "BCHUSD",
         LINK: "LINKUSD",
         XLM: "XXLMZUSD",
+        XTZ: "XTZUSD",
     }
 
     // default to Bitcoin if there is no selection
@@ -50,55 +51,42 @@ function ExchangeKraken({infoButtonKraken}) {
             // ask price
             let newAskPrice = jsonData.result[tickerStr].a[0]
             setAskPrice(newAskPrice)
-
             // bid price
             let newBidPrice = jsonData.result[tickerStr].b[0]
             setBidPrice(newBidPrice)
-
             // last price
             let newLastPrice = jsonData.result[tickerStr].c[0]
             setLastPrice(newLastPrice)
-
             // volume today
             let newVolumeToday = jsonData.result[tickerStr].v[0]
             setVolumeToday(newVolumeToday)
-
             // volume last 24 hours
             let newVolumeLast24HR = jsonData.result[tickerStr].v[1]
             setVolumeLast24HR(newVolumeLast24HR)
-
             // Average price today
             let newAveragePriceToday = jsonData.result[tickerStr].p[0]
             setAveragePriceToday(newAveragePriceToday)
-
             // Average price last 24 hours
             let newAveragePriceLast24HR = jsonData.result[tickerStr].p[1]
             setAveragePriceLast24HR(newAveragePriceLast24HR)
-
             // number of trades today
             let newTradesToday = jsonData.result[tickerStr].t[0]
             setTradesToday(newTradesToday)
-
             // number of trades last 24 hours
             let newTradesLast24HR = jsonData.result[tickerStr].t[1]
             setTradesLast24HR(newTradesLast24HR)
-
             // low price today
             let newLowToday = jsonData.result[tickerStr].l[0]
             setLowToday(newLowToday)
-
             // low price last 24 hr
             let newLowLast24HR = jsonData.result[tickerStr].l[1]
             setLowLast24HR(newLowLast24HR)
-
             // high price today
             let newHighToday = jsonData.result[tickerStr].h[0]
             setHighToday(newHighToday)
-
             // high price last 24 hr
             let newHighLast24HR = jsonData.result[tickerStr].h[1]
             setHighLast24HR(newHighLast24HR)
-
             // opening price
             let newOpeningPrice = jsonData.result[tickerStr].o
             setOpeningPrice(newOpeningPrice)
@@ -108,10 +96,10 @@ function ExchangeKraken({infoButtonKraken}) {
         })
     }, [menuState])
 
-    // if-else statement determines how much information is displayed
+    // determine how much info to display via if-else statement
     if (infoButtonKraken === false) {
         return (
-            <div className="krakenReturn">
+            <div id="krakenReturn" className="APIReturns">
                 <h4>Kraken</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${LastPrice}</p>
@@ -119,7 +107,7 @@ function ExchangeKraken({infoButtonKraken}) {
         )
     } else {
         return (
-            <div className="krakenReturn">
+            <div id="krakenReturn" className="APIReturns">
                 <h4>Kraken</h4>
                 <h5>{assetChoice}</h5>
                 <p>Last price: ${LastPrice}</p>
