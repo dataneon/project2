@@ -25,7 +25,6 @@ As a user, I want to see this information update quickly, because the nature of 
 The APIs must provide correct information.
 The user can click on each exchange for more information.
 The page should look nice.
-The "about" page includes information on the APIs used.
 Users can select cryptocurrencies other than Bitcoin.
 
 ### Stretch Goals
