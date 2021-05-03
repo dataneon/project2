@@ -31,44 +31,43 @@ function Dashboard(props) {
 
     return (
         <div>
-            <div id="mainContent">
-                <form id="assetMenu">
-                    <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
-                        <option value="">Choose asset</option>
-                        <option value="BTC">Bitcoin</option>
-                        <option value="ETH">Ethereum</option>
-                        <option value='ADA'>Cardano</option>
-                        <option value='LTC'>Litecoin</option>
-                        <option value='BCH'>Bitcoin Cash</option>
-                        <option value='LINK'>Chainlink</option>
-                        <option value='XLM'>Stellar Lumens</option>
-                        <option value='XTZ'>Tezos</option>
-                    </select>
-                </form>
-                <DataContext.Provider value={{menuState, setMenuState}}>
-                    <Image />
-                    <div id="allBlocks">
-                        <div id="coinbaseBlock">
-                            <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
-                            <button value="coinbase" className="infoButtons" onClick={handleInfoClick}>
-                                More information
-                            </button>
-                        </div>
-                        <div id="huobiBlock">
-                            <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
-                            <button value="huobi" className="infoButtons" onClick={handleInfoClick}>
-                                More information
-                            </button>
-                        </div>
-                        <div id="krakenBlock">
-                            <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
-                            <button value="kraken" className="infoButtons" onClick={handleInfoClick}>
-                                More information
-                            </button>
-                        </div>
+            <h3>Select a cryptocurrency from the menu</h3>
+            <form id="assetMenu">
+                <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
+                    <option value="">Choose asset</option>
+                    <option value="BTC">Bitcoin</option>
+                    <option value="ETH">Ethereum</option>
+                    <option value='ADA'>Cardano</option>
+                    <option value='LTC'>Litecoin</option>
+                    <option value='BCH'>Bitcoin Cash</option>
+                    <option value='LINK'>Chainlink</option>
+                    <option value='XLM'>Stellar Lumens</option>
+                    <option value='XTZ'>Tezos</option>
+                </select>
+            </form>
+            <DataContext.Provider value={{menuState, setMenuState}}>
+                <Image />
+                <div id="allBlocks">
+                    <div id="coinbaseBlock">
+                        <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
+                        <button value="coinbase" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
                     </div>
-                </DataContext.Provider>
-            </div>
+                    <div id="huobiBlock">
+                        <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
+                        <button value="huobi" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
+                    </div>
+                    <div id="krakenBlock">
+                        <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
+                        <button value="kraken" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
+                    </div>
+                </div>
+            </DataContext.Provider>
         </div>
     );
 }
