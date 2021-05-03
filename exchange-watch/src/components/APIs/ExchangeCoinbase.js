@@ -3,7 +3,7 @@ import { DataContext } from '../DataContext'
 
 function ExchangeCoinbase({infoButtonCoinbase}) {
     // useContext brings in the menuState
-    const {menuState, setMenuState} = useContext(DataContext)
+    const {menuState} = useContext(DataContext)
     let assetChoice = menuState.userChoice
 
     // Create states for price, volume, etc.
@@ -27,7 +27,7 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
     }
     
     // default to Bitcoin if there is no selection
-    if (assetChoice.length == 0) {assetChoice = "BTC"}
+    if (assetChoice.length === 0) {assetChoice = "BTC"}
 
     // shorthand for selected ticker string
     let tickerStr = tickersObj[assetChoice]

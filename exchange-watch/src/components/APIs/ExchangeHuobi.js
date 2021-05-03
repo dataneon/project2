@@ -3,7 +3,7 @@ import { DataContext } from '../DataContext'
 
 function ExchangeHuobi({infoButtonHuobi}) {
     // get menuState via useContext
-    const {menuState, setMenu} = useContext(DataContext)
+    const {menuState} = useContext(DataContext)
     let assetChoice = menuState.userChoice
 
     // create states for price, volume, etc.
@@ -29,7 +29,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
     }
 
     // default to Bitcoin if there is no selection
-    if (assetChoice.length == 0) {assetChoice = "BTC"}
+    if (assetChoice.length === 0) {assetChoice = "BTC"}
 
     // shorthand for selected ticker string
     let tickerStr = tickersObj[assetChoice]

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import ExchangeKraken from './APIs/ExchangeKraken'
 import ExchangeCoinbase from './APIs/ExchangeCoinbase'
 import ExchangeHuobi from './APIs/ExchangeHuobi'
@@ -24,9 +24,9 @@ function Dashboard(props) {
     function handleInfoClick(event) {
         event.preventDefault()
         let buttonValue = event.target.value
-        if (buttonValue == "kraken") setInfoButtonKraken(!infoButtonKraken)
-        if (buttonValue == "coinbase") setInfoButtonCoinbase(!infoButtonCoinbase)
-        if (buttonValue == "huobi") setInfoButtonHuobi(!infoButtonHuobi)
+        if (buttonValue === "kraken") setInfoButtonKraken(!infoButtonKraken)
+        if (buttonValue === "coinbase") setInfoButtonCoinbase(!infoButtonCoinbase)
+        if (buttonValue === "huobi") setInfoButtonHuobi(!infoButtonHuobi)
     }
 
     return (
