@@ -100,7 +100,7 @@ function ExchangeKraken({infoButtonKraken}) {
     if (infoButtonKraken === false) {
         return (
             <div id="krakenReturn" className="APIReturns">
-                <h3 class="blockHeaders">Kraken: {assetChoice}</h3>
+                <h2 class="blockHeaders">Kraken: {assetChoice}</h2>
                 <div class="blockText">
                     <p>Last price: ${LastPrice}</p>
                 </div>
@@ -109,7 +109,7 @@ function ExchangeKraken({infoButtonKraken}) {
     } else {
         return (
             <div id="krakenReturn" className="APIReturns">
-                <h3 class="blockHeaders">Kraken: {assetChoice}</h3>
+                <h2 class="blockHeaders">Kraken: {assetChoice}</h2>
                 <div class="blockText">
                     <ul>
                         <li>Last price: ${LastPrice}</li>

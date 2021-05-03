@@ -68,7 +68,7 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
     if (infoButtonCoinbase === false) {
         return (
             <div id="coinbaseReturn" className="APIReturns">
-                <h3 class="blockHeaders">Coinbase Pro: {assetChoice}</h3>
+                <h2 class="blockHeaders">Coinbase Pro: {assetChoice}</h2>
                 <div class="blockText">
                         <p>Last price: ${lastPrice}</p>
                 </div>
@@ -77,15 +77,15 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
     } else {
         return (
             <div id="coinbaseReturn" className="APIReturns">
-                <h3 class="blockHeaders">Coinbase Pro: {assetChoice}</h3>
+                <h2 class="blockHeaders">Coinbase Pro: {assetChoice}</h2>
                 <div class="blockText">
                     <ul>
                         <li>Last price: ${lastPrice}</li>
                         <li>Ask price: ${askPrice}</li>
                         <li>Bid price: ${bidPrice}</li>
                         <li>Volume today in {tickerStr}: {volume} {assetChoice}</li>
-                        <li>Size of the last purchase: {sizeLastPurchase} {assetChoice}</li>
-                        <li>Time of the last purchase: {timeLastPurchase}</li>
+                        <li>Size of last purchase: {sizeLastPurchase} {assetChoice}</li>
+                        <li>Time of last purchase: {timeLastPurchase}</li>
                     </ul>
                 </div>
             </div>

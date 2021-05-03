@@ -54,15 +54,21 @@ function Dashboard(props) {
                 <div id="allBlocks">
                     <div id="coinbaseBlock">
                         <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
-                        <button value="coinbase" onClick={handleInfoClick}>More information</button>
+                        <button value="coinbase" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
                     </div>
                     <div id="huobiBlock">
                         <ExchangeHuobi infoButtonHuobi={infoButtonHuobi}/>
-                        <button value="huobi" onClick={handleInfoClick}>More information</button>
+                        <button value="huobi" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
                     </div>
                     <div id="krakenBlock">
                         <ExchangeKraken infoButtonKraken={infoButtonKraken}/>
-                        <button value="kraken" onClick={handleInfoClick}>More information</button>
+                        <button value="kraken" className="infoButtons" onClick={handleInfoClick}>
+                            More information
+                        </button>
                     </div>
                 </div>
             </DataContext.Provider>

@@ -75,7 +75,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
     if (infoButtonHuobi === false) {
         return (
             <div id="huobiReturn" className="APIReturns">
-                <h3 class="blockHeaders">Huobi: {assetChoice}</h3>
+                <h2 class="blockHeaders">Huobi: {assetChoice}</h2>
                 <div class="blockText">
                     <p>Last price: ${lastPrice}</p>
                 </div>
@@ -84,7 +84,7 @@ function ExchangeHuobi({infoButtonHuobi}) {
     } else {
         return (
             <div id="huobiReturn" className="APIReturns">
-                <h3 class="blockHeaders">Huobi: {assetChoice}</h3>
+                <h2 class="blockHeaders">Huobi: {assetChoice}</h2>
                 <div class="blockText">
                     <ul>
                         <li>Last price: ${lastPrice}</li>
