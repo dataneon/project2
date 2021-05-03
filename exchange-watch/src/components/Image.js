@@ -18,14 +18,6 @@ function Image() {
     if (assetChoice === "XLM") return (<div><img src={process.env.PUBLIC_URL + '/images/XLM.png'}/></div>)
     if (assetChoice === "XTZ") return (<div><img src={process.env.PUBLIC_URL + '/images/XTZ.png'}/></div>)
     else return null
-
-     // let imgSRC = `/img/${assetChoice}.png`
-
-    // return (
-    //     <div>
-    //         <img src={process.env.PUBLIC_URL + '/images/BTC.png'}/>
-    //     </div>
-    // );
 }
 
 export default Image;
