@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(props) {
+function Header() {
     return (
         <div id="headerReturn">
             <h1>Exchange Watch</h1>

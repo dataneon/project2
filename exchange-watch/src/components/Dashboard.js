@@ -31,7 +31,7 @@ function Dashboard() {
 
     return (
         <div>
-            <h4>Check the stats on crypto assets from multiple exchanges</h4>
+            <h3>Check the stats on crypto assets from multiple exchanges</h3>
             <form id="assetMenu">
                 <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
                     <option value="">Choose asset</option>

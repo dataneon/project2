@@ -6,12 +6,12 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: slategrey;
+  background-color: #393E41;
   min-height: 100vh;
   display: flex;
   text-align: center;
   flex-direction: column;
-  color: white;
+  color: #F6F7EB;
 }
 
 p {
@@ -32,7 +32,7 @@ p {
 }
 
 #assetMenu {
-  margin: 1rem 0 2rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 ul {
@@ -54,7 +54,7 @@ ul {
 }
 
 .infoButtons {
-  background-color: darkorange;
+  background-color: #3F88C5;
   border: none;
   border-radius: 5px;
   color: white;
