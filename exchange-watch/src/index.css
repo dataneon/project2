@@ -9,6 +9,7 @@ body {
   background-color: slategrey;
   min-height: 100vh;
   display: flex;
+  text-align: center;
   flex-direction: column;
   color: white;
 }
@@ -19,7 +20,7 @@ p {
 }
 
 #headerReturn {
-  font-size: 2rem;
+  font-size: 2.25rem;
   margin: 0 0 -1rem 0;
 }
 
@@ -27,11 +28,11 @@ p {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 3rem 0 3rem 0;
+  margin: 2rem 0 3rem 0;
 }
 
 #assetMenu {
-  margin: 1rem 0 3rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 ul {

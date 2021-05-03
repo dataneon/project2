@@ -5,7 +5,7 @@ import ExchangeHuobi from './APIs/ExchangeHuobi'
 import Image from './Image'
 import { DataContext } from './DataContext'
 
-function Dashboard(props) {
+function Dashboard() {
     // define state for selected cryptocurrency from dropdown menu
     const initialMenuState = {userChoice: ''}
     const [menuState, setMenuState] = useState(initialMenuState)
@@ -31,7 +31,7 @@ function Dashboard(props) {
 
     return (
         <div>
-            <h3>Select a cryptocurrency from the menu</h3>
+            <h4>Check the stats on crypto assets from multiple exchanges</h4>
             <form id="assetMenu">
                 <select id="userChoice" onChange={handleChange} value={menuState.userChoice}>
                     <option value="">Choose asset</option>
