@@ -2,7 +2,7 @@
 This web app allows the user to check information regarding some of the most popular cryptocurrency assets.
 
 ## Working product
-![image of product](/img/product.png)
+![image of product](/images-for-readme/product.png)
 
 ## Technologies used
 * HTML
