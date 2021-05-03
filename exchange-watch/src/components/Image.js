@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from './DataContext';
 
-function Image(props) {
+function Image() {
+    // get menuState via useContext
+    const {menuState, setMenu} = useContext(DataContext)
+    let assetChoice = menuState.userChoice
+
+    
+
+
     return (
         <div>
             
