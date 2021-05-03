@@ -68,8 +68,8 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
     if (infoButtonCoinbase === false) {
         return (
             <div id="coinbaseReturn" className="APIReturns">
-                <h2 class="blockHeaders">Coinbase Pro: {assetChoice}</h2>
-                <div class="blockText">
+                <h2 className="blockHeaders">Coinbase Pro</h2>
+                <div className="blockText">
                         <p>Last price: ${lastPrice}</p>
                 </div>
             </div>
@@ -77,8 +77,8 @@ function ExchangeCoinbase({infoButtonCoinbase}) {
     } else {
         return (
             <div id="coinbaseReturn" className="APIReturns">
-                <h2 class="blockHeaders">Coinbase Pro: {assetChoice}</h2>
-                <div class="blockText">
+                <h2 className="blockHeaders">Coinbase Pro</h2>
+                <div className="blockText">
                     <ul>
                         <li>Last price: ${lastPrice}</li>
                         <li>Ask price: ${askPrice}</li>

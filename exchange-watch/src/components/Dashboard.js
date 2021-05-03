@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import ExchangeKraken from './APIs/ExchangeKraken'
 import ExchangeCoinbase from './APIs/ExchangeCoinbase'
 import ExchangeHuobi from './APIs/ExchangeHuobi'
+import Image from './Image'
 import { DataContext } from './DataContext'
 
 function Dashboard(props) {
@@ -51,6 +52,7 @@ function Dashboard(props) {
                 {/* <button type="submit">Go</button> */}
             </form>
             <DataContext.Provider value={{menuState, setMenuState}}>
+                <Image />
                 <div id="allBlocks">
                     <div id="coinbaseBlock">
                         <ExchangeCoinbase infoButtonCoinbase={infoButtonCoinbase}/>
